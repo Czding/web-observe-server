@@ -1,0 +1,17 @@
+{
+  "verbose": false,
+  "debug": false,
+  "exec": "ts-node ./src/server/index.ts",
+  "ignore": [
+   "node_modules",
+   "./src/common",
+   "./src/static",
+   "./src/web"
+  ],
+  "events": {
+   "restart": ""
+  },
+  "restartable": "rs",
+  "ext": "js ts",
+  "watch": ["./src/server"]
+ }
