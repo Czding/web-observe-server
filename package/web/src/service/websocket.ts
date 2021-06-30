@@ -1,7 +1,8 @@
 
-import app from '../config'
 
-const ws = new WebSocket(app.SOCKET_URL)
+let ws = new WebSocket(`${$App.WEB_SOCKET_URL}?origin=${window.origin}&uid=${$App.WEB_UUID}`)
+
+$App.client_ws = ws
 
 let HEART_TIMER: any = null
 
@@ -12,20 +13,21 @@ const heartbeat = () => {
     }
     ws.send(JSON.stringify(message))
     heartbeat()
-  }, 5000)
+  }, 60 * 1000)
 }
 
 ws.onopen = () => { 
-  console.log("Connection open ...")
   heartbeat()
   
-};
+}
 
 ws.onmessage = (msg) => {
-  console.log( "Received Message: ", msg)
+
   
-};
+}
 
 ws.onclose = () => {
-  console.log("Connection closed.");
-};
+  
+}
+
+export {}
